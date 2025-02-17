@@ -1,0 +1,18 @@
+
+const express = require('express')
+const routes = express.Router()
+const { SignUp, AddEvent, Login, Events } = require('../Handler/handler')
+
+
+
+
+routes.post('/Login',Login);
+routes.post('/SingnUp',SignUp);
+routes.post('/AddEvent',AddEvent)
+routes.get('/Event',Events)
+
+
+
+module.exports = routes
+
+
