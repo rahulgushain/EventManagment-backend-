@@ -71,6 +71,7 @@ exports.Login = async (req, res) => {
     }
 
     const PayLoad = {
+      userId : user._id,
       email: user.email,
       name: user.name,
     };
@@ -107,7 +108,7 @@ exports.AddEvent = async (req, res) => {
           });
       }
 
-      const tasks = await Event.create({ date, task });
+      const tasks = await Event.create({ userId:req.userId, date, task });
 
       res.status(200).json({ 
           success: true,
@@ -126,8 +127,9 @@ exports.AddEvent = async (req, res) => {
 exports.Events = async(req,res)=>{
   try {
     
-    const events = await Event.find();
+    const events = await Event.find({userId:req.userId});
     res.status(200).json({
+      success: true,
       events
     })
 

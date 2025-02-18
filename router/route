@@ -2,14 +2,14 @@
 const express = require('express')
 const routes = express.Router()
 const { SignUp, AddEvent, Login, Events } = require('../Handler/handler')
-
+const Auth = require('../Auth/profile')
 
 
 
 routes.post('/Login',Login);
 routes.post('/SingnUp',SignUp);
-routes.post('/AddEvent',AddEvent)
-routes.get('/Event',Events)
+routes.post('/AddEvent',Auth,AddEvent)
+routes.get('/Event',Auth,Events)
 
 
 
